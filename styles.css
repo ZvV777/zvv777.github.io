@@ -464,7 +464,7 @@ h3{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-image: url(1.png);
+    background-image: url(front.png);
     background-position: center;
     background-size: cover;
   }
