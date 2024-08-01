@@ -1,3 +1,5 @@
+window.addEventListener("load", function () {
+    document.getElementById('loader').style.display = 'none'; //hide loading screen
 var images = document.getElementById("images");
 var videos = document.getElementById("videos");
 var prevBtn = document.getElementById("Left");
@@ -40,10 +42,12 @@ function changeVideo(){
     videos.style.transform = `translateX(${-position*300}px)`;
   }
 
-forwardBtn.addEventListener("click", () => {
-    position++;
-    changeImage();
-});
+  try {
+    forwardBtn.addEventListener("click", () => {
+        position++;
+        changeImage();
+    });
+
 videoforwardBtn.addEventListener("click", () => {
     position++;
     changeVideo();
@@ -57,14 +61,29 @@ prevBtn.addEventListener("click", () => {
     position--;
     changeImage();
 });
+} catch (error) {
+    console.error(error);
+}
 
 menu.addEventListener("click", () => {
     list.style.transform = `scaleY(${300}px)`;
+    menu.style.display='none';
 });
 
-function drop(){
-    document.getElementById("dropdown").classList.toggle("show");
+function drop(event) {
+        
+    console.log("Menu button clicked"); // Debugging statement
+    event.stopPropagation();
+    var dropdown = document.getElementById("dropdown");
+    if (dropdown) {
+        dropdown.classList.toggle("show");
+        console.log("Dropdown class toggled"); // Debugging statement
+    } else {
+        console.log("Dropdown element not found"); // Debugging statement
+    }
 }
+
+window.drop = drop; //make sure drop function globally accessible
 
 window.onclick = function(event){
     if(!event.target.matches('#menu')){
@@ -73,9 +92,12 @@ window.onclick = function(event){
             var openDropdown = dropdowns[i];
             if(openDropdown.classList.contains('show')){
                 openDropdown.classList.remove('show');
+                console.log("Dropdown closed"); // Debugging statement
             }
         }
     }
 };
+
+});
 
 
