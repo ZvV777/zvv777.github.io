@@ -6,7 +6,7 @@
   
   body{
     overflow-y: scroll;
-    background-image: url(background.jpg);
+    background-image: url(/zvv777.github.io-main/public/background.jpg);
     background-size: cover;
   }
   header{
@@ -44,61 +44,55 @@
     flex-direction: row;
   }
 
-  #menu{
+  #menu {
     cursor: pointer;
     z-index: 3;
-  }
-  #menu:hover, #menu:focus{
-    .stripes{fill:cornflowerblue};
-    .clouds{fill:deepskyblue};
-    .back{fill:aliceblue};
-  }
+}
 
-  .menuContainer
-  {
+#menu:hover, #menu:focus {
+    .stripes { fill: cornflowerblue; }
+    .clouds { fill: deepskyblue; }
+    .back { fill: aliceblue; }
+}
+
+.menuContainer {
     position: relative;
     display: inline-block;
-  }
+}
 
-  .menuContainer button{
-    background-color: #00000000;
-    border: none;
-  }
 
-  .dropdownContent{
-    display: block;
+.dropdownContent {
+    display: none; /* Initially hidden */
     position: absolute;
     background-color: #16f8c3ad;
     min-width: 160px;
     overflow: hidden;
-    margin-left: -35px;
+    margin-left: -85px;
+    font-size: 25px;
     border-radius: 12px;
     box-shadow: rgba(0, 255, 162, 0.07) 0px 1px 2px, rgba(0, 255, 153, 0.07) 0px 2px 4px, rgba(0, 255, 153, 0.07) 0px 4px 8px, rgba(0, 255, 162, 0.07) 0px 8px 16px, rgba(0, 255, 166, 0.07) 0px 16px 32px, rgba(0, 255, 149, 0.07) 0px 32px 64px;
-
-    transition: transform 0.7s ease ;
-    transform: translateY(-160%);
     transition: transform 0.3s ease-in-out;
-    transform: scaleY(0px);
+    transform: scaleY(0); /* Initially scaled down */
+    transform-origin: top; /* Scale from the top */
     z-index: 2;
-  }
+}
 
-  .dropdownContent a{
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
+.dropdownContent.show {
+    display: block; /* Show the dropdown */
+    transform: scaleY(1); /* Scale up to full height */
+}
+
+.dropdownContent a {
+    color: black;
     padding: 12px 16px;
+    text-decoration: none;
     display: block;
-  }
+}
 
-  .dropdownContent a:hover{
-    background-color: #1d1d1d;
-  }
+.dropdownContent a:hover {
+    background-color: #f1f1f1;
+}
 
-  .show{
-    display: block;
-    transform: translateY(0);
-    transform: scaleY(150px);
-  }
 
   .main{
     position: relative;
@@ -404,7 +398,7 @@ h3{
   }
 
   .mainC{
-    background-image: url(MushroomCreature.png);
+    background-image: url(/zvv777.github.io-main/public/MushroomCreature.png);
     background-position: -600px;
     display: flex;
     flex-direction: column;
@@ -464,7 +458,7 @@ h3{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-image: url(front_improved.png);
+    background-image: url(/zvv777.github.io-main//public/front_improved.png);
     background-position: center;
     background-size: cover;
   }
@@ -474,8 +468,125 @@ h3{
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    background-image: url(2.png);
+    background-image: url(/zvv777.github.io-main//public/2.png);
     transform: rotateY(180deg);
     background-position: center;
     background-size: cover;
+  }
+
+  #loader {
+    background-color: #16F8C2;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+  }
+  
+  .scene {
+    position: relative;
+    z-index: 2;
+    height: 220px;
+    width: 220px;
+    display: grid;
+    place-items: center;
+  }
+  
+  .cube-wrapper {
+    transform-style: preserve-3d;
+    animation: bouncing 2s infinite;
+  }
+  
+  .cube {
+    transform-style: preserve-3d;
+    transform: rotateX(45deg) rotateZ(45deg);
+    animation: rotation 2s infinite;
+  }
+  
+  .cube-faces {
+    transform-style: preserve-3d;
+    height: 80px;
+    width: 80px;
+    position: relative;
+    transform-origin: 0 0;
+    transform: translateX(0) translateY(0) translateZ(-40px);
+  }
+  
+  .cube-face {
+    position: absolute;
+    inset: 0;
+    background: #110d31ff;
+    border: solid 1px #ff8484ff;
+  }
+  .cube-face.shadow {
+    transform: translateZ(-80px);
+    animation: bouncing-shadow 2s infinite;
+  }
+  .cube-face.top {
+    transform: translateZ(80px);
+  }
+  .cube-face.front {
+    transform-origin: 0 50%;
+    transform: rotateY(-90deg);
+  }
+  .cube-face.back {
+    transform-origin: 0 50%;
+    transform: rotateY(-90deg) translateZ(-80px);
+  }
+  .cube-face.right {
+    transform-origin: 50% 0;
+    transform: rotateX(-90deg) translateY(-80px);
+  }
+  .cube-face.left {
+    transform-origin: 50% 0;
+    transform: rotateX(-90deg) translateY(-80px) translateZ(80px);
+  }
+  
+  @keyframes rotation {
+    0% {
+      transform: rotateX(45deg) rotateY(0) rotateZ(45deg);
+      animation-timing-function: cubic-bezier(0.17, 0.84, 0.44, 1);
+    }
+    50% {
+      transform: rotateX(45deg) rotateY(0) rotateZ(225deg);
+      animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+    }
+    100% {
+      transform: rotateX(45deg) rotateY(0) rotateZ(405deg);
+      animation-timing-function: cubic-bezier(0.17, 0.84, 0.44, 1);
+    }
+  }
+  @keyframes bouncing {
+    0% {
+      transform: translateY(-40px);
+      animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+    }
+    45% {
+      transform: translateY(40px);
+      animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    100% {
+      transform: translateY(-40px);
+      animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+    }
+  }
+  @keyframes bouncing-shadow {
+    0% {
+      transform: translateZ(-80px) scale(1.3);
+      animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+      opacity: 0.05;
+    }
+    45% {
+      transform: translateZ(0);
+      animation-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateZ(-80px) scale(1.3);
+      animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
+      opacity: 0.05;
+    }
   }
