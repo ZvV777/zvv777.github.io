@@ -1,26 +1,62 @@
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
   }
+/*moved screen css and added html, body*/
+  /*CSS for tablet*/
+ @media screen and (max-width: 900px) {
+  .main {
+      flex-direction: column;
+  }
+
+  #middle {
+    flex-direction: column;
+}
+
+  #setL {
+      flex-direction: column;
+  }
+}
+
+/* CSS for Mobile */
+@media screen and (max-width: 760px) {
+  .main {
+      flex-direction: column;
+  }
+
+  #middle {
+    flex-direction: column;
+}
+
+  #setL {
+      flex-direction: column;
+  }
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
   
   body{
     overflow-y: scroll;
     background-image: url(background.jpg);
     background-size: cover;
+    width:100%;
   }
   header{
-    font-size: 48px;
     color: aliceblue;
     background-color: rgb(20, 20, 20);
     height: 80px;
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding-right: 60px;
-    z-index: 3;
+    position: fixed;
+    z-index: 70;
+    font-size: 100%;
+    top: 0;
   }
   footer{
     font-size: 18px;
@@ -32,16 +68,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width:auto;
+    position: relative;
+    width:100% !important;
   }
   h1{
     display:flex;
     margin-top: 30px;
-    font-size: 52px;
   }
   #logo{
     display: flex;
     flex-direction: row;
+    width: 100%;
+    max-height: 100px;
   }
 
   #menu {
@@ -93,28 +131,42 @@
     background-color: #f1f1f1;
 }
 
+#backdrop{
+  position:fixed;
+  width:100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: #000000c7;
+}
 
   .main{
-    position: relative;
-    z-index: 1;
-    padding: 40px;
+    position:relative;
+    z-index: 2;
+    overflow-y: scroll;
+    overflow-x:auto;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box !important;
+    padding-top: 40px;
     align-items: center;
-    justify-content: space-between;
-    
-    background-color: #000000c7;
+    justify-content:space-between;
+    width: 100%;
   }
 
   #top{
     gap: 36px;
     padding: 40px;
+    width:100% !important;
+    margin-bottom: 200px;
   }
 
   #coverLetter{
     color: white;
     font-size: 24px;
     float: left;
+    width:100% ;
   }
   h2{
     color: white;
@@ -125,52 +177,36 @@
 
   #pic{
     float: right;
+    position: relative;
     margin: 10px;
-    height: 450px;
-    width: 300px;
+    max-width: 30%;
     box-shadow: #2cecaf40 0px 54px 55px, rgba(36, 255, 171, 0.12) 0px -12px 30px, rgba(52, 240, 171, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(67, 255, 205, 0.09) 0px -3px 5px;
   }
   
 #middle{
     display: flex;
-    width: 880px;
-    height: 770px;
+    width:100% !important;
+    height: 980px;
+    justify-content: center;
+    margin-bottom: 250px;
 }
 
  #setL{
     display: flex;
     flex-direction: column;
     align-items: start;
-    width: 500px;
-    height: 730px;
-    margin-bottom: 30px;
+    max-width: 500px;
+    max-height: 730px;
+    height: auto;
+    width: auto;
+    margin-bottom: 190px;
  } 
 
- /* CSS for Tablet */
-@media screen and (max-width: 768px) {
-    #middle {
-        flex-direction: column;
-    }
-
-    #setL {
-        flex-direction: column;
-    }
-}
-
-/* CSS for Mobile */
-@media screen and (max-width: 480px) {
-    #middle {
-        flex-direction: column;
-    }
-
-    #setL {
-        flex-direction: column;
-    }
-}
+ 
 
 #languages{
     width: 500px;
-    height: 330px;
+    height: 430px;
     background-color: #61fff489;
     border-radius: 24px;
     margin-bottom: 30px;
@@ -179,7 +215,7 @@
 
 #qualifications{
     width: 500px;
-    height: 390px;
+    height: 490px;
     background-color: #5185f585;
     border-radius: 24px;
     padding-bottom: 30px;
@@ -193,7 +229,7 @@
 
 #skills{
     width: 380px;
-    height: 747px;
+    height: 900px;
     background-color: #aa6effb3;
     border-radius: 24px;
     margin-left: 30px;
@@ -214,6 +250,7 @@ h3{
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   width:100%;
 }
 
 #place{
@@ -221,6 +258,7 @@ h3{
     align-items: center;
     justify-content: center;
     height: 300px;
+    width:100%;
 }
 
 #bottom h2{
@@ -231,11 +269,13 @@ h3{
 .carousel{
     position: relative;
     height: 500px;
-    width: 900px;
+    width: 100%;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: -110px;
+    padding: 10px;
 }
 
 
@@ -243,6 +283,7 @@ h3{
     display: flex;
     transform: translateX(0);
     transition: all 0.5s ease-in-out;
+    width:100%;
 }
 
 .wrapper img{
@@ -350,40 +391,37 @@ h3{
 }
 
 
-  #blur{
-    background-color: #000000;
-    opacity: 80%;
-    width:auto;
-    height:1200px;
-    z-index: 0;
-  }
+ 
   #cv{
-    width: 800px;
+    width: 50%;
     z-index: 2;
+    margin-top: 40px;
   }
   #svgD {
-    float: right;
-    margin-top: -150px;
-    margin-left: 550px;
+    width: 50%;
+    margin-top: -25px;
   }
   
   .btn{
     cursor: pointer;
   }
   #button{
-    display: inline-flex;
-    padding-right: 50px;
+    width: 50%;
+    height: 10vh;
+    display: flex;
+    align-items: center; /* Center vertically */
+  justify-content: flex-start; /* Align items to the start (left) */
   }
 
   .download{
     color:white;
-    font-size: 24px;
     letter-spacing: 1px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     text-decoration: none;
-    margin-top: 15px;
-    margin-left: -200px;
+    position: absolute;
+    padding-left:8% ;
+    font-size: 2vw;
   }
   .download:hover{
     color: #16F8C2;
@@ -399,30 +437,31 @@ h3{
 
   .mainC{
     background-image: url(MushroomCreature.png);
-    background-position: -600px;
+    background-position-x: -600px;
     display: flex;
     flex-direction: column;
     align-items: end;
     justify-content: start;
-    width: 900px;
-    height: 900px;
+    width: 80%;
+    height: 100vh;
   }
 
   #mainContact{
-    background-color: #0000001b;
-    width: 900px;
-    height: 900px;
+    background-color: #000000b1;
+    width: auto;
+    height: auto;
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: end;
     justify-content: start;
-    padding-right: 80px;
+    padding: 40px;
+    height: 41%;
   }
 
   .contact{
     color: white;
     font-size: 24px;
-    margin-right: 15px;
   }
 
   .cl{
@@ -435,11 +474,12 @@ h3{
     color: white;
   }
  
-
   .MainCard{
     position: relative;
     width: 250px;
     height: 420px;
+    margin-top: 110px;
+    margin-bottom: 20px;
   }
 
   .TheCard{
@@ -475,15 +515,15 @@ h3{
   }
 
   #loader {
-    background-color: #16F8C2;
-    width: 100vw;
-    height: 100vh;
+    background-color: #16F8C2 !important;
+    width: 100% !important;
+    height: 100% !important;
     display: grid;
-    place-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 99;
+    place-items: center !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 99 !important;
   }
   
   .scene {
@@ -589,4 +629,42 @@ h3{
       animation-timing-function: cubic-bezier(0.76, 0.05, 0.86, 0.06);
       opacity: 0.05;
     }
+  }
+
+  #models{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .App {
+    font-family: sans-serif;
+    text-align: center;
+    height: 40vh;
+  }
+  
+  #boxHolder {
+    height: 40dvh;
+    width: 50%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+  }
+  
+  
+  #box{
+    border: 2px solid #cc50e5;
+     padding: 10px;
+     text-align: center;
+     width: 50%;
+     height: 40dvh;
+     overflow: hidden;
+     margin-top: 10%;
+  }
+
+  #options{
+    float: left;
+    display: flex;
+    flex-direction: column;
   }
